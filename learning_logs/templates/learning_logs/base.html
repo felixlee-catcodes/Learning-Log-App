@@ -3,6 +3,10 @@
     <a href="{% url 'learning_logs:topics' %}">Topics</a> - 
     {% if user.is_authenticated %}
       Hello, {{ user.username }}.
+      <form action="{% url 'users:logout' %}" method="post" style="display: inline-block; margin: 0; padding: 0;">
+        {% csrf_token %}
+        <button type="submit" style="background: none; border: none; padding: 0; margin: none; color: #007bff; text-decoration: underline; cursor: pointer; font: inherit;">Log out</button>
+      </form>
     {% else %}
       <a href="{% url 'users:login' %}">Login</a>
     {% endif %}  
